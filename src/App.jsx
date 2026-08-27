@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-// --- DATOS SIMULADOS (MOCK) ---
+// --- DATOS SIMULADOS ---
 const ordenesIniciales = [
   { id: "OT-001", bus: "420", fallasReportadas: ["Foco delantero derecho quemado", "Luz de freno izquierda no enciende", "Espejo trizado"], estado: "Pendiente", fechaSolicitud: "2026-08-27", reparaciones: [], adicionales: "", responsables: [] },
   { id: "OT-002", bus: "315", fallasReportadas: ["Ruido extraño al frenar", "Fuga de aire en puerta delantera"], estado: "Pendiente", fechaSolicitud: "2026-08-27", reparaciones: ["Ruido extraño al frenar"], adicionales: "", responsables: ["Luis"] },
