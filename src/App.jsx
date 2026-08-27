@@ -74,7 +74,7 @@ export default function Mecanicos() {
         return {
           ...o,
           estado: estadoFinal,
-          responsables: responsablesFinales, // Guardamos la lista consolidada
+          responsables: responsablesFinales,
           reparaciones: itemsReparados,
           adicionales: trabajoAdicional,
           fechaResolucion: estadoFinal === "Resuelto" ? fechaActual : o.fechaResolucion
@@ -165,14 +165,14 @@ export default function Mecanicos() {
           </div>
         </div>
 
-        {/* PASO 3: BOTONES DE RESOLUCIÓN */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+        {/* PASO 3: BOTONES DE RESOLUCIÓN (Actualizados) */}
+        <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
           <button onClick={() => guardarOrden("Pendiente")} style={styles.btnPausar}>
-            ⏸️ GUARDAR AVANCE (DEJAR PENDIENTE)
+            ⏸️ GUARDAR AVANCE
           </button>
           
           <button onClick={() => guardarOrden("Resuelto")} style={styles.btnResolver}>
-            ✅ FINALIZAR TRABAJO (RESOLVER ORDEN)
+            ✅ FINALIZAR TRABAJO
           </button>
         </div>
       </div>
@@ -291,7 +291,7 @@ const styles = {
   listaFallas: { display: "flex", flexDirection: "column", gap: "10px" },
   btnChecklist: { display: "flex", alignItems: "center", padding: "15px", borderRadius: "8px", border: "2px solid #ddd", cursor: "pointer", gap: "15px", transition: "all 0.2s ease", width: "100%" },
   textArea: { width: "100%", minHeight: "80px", padding: "15px", marginTop: "10px", fontSize: "1rem", borderRadius: "8px", border: "1px solid #ccc", boxSizing: "border-box" },
-  btnPausar: { width: "100%", padding: "15px", backgroundColor: "#ff9800", color: "white", fontSize: "1.1rem", fontWeight: "bold", border: "none", borderRadius: "10px", cursor: "pointer", boxShadow: "0 2px 4px rgba(0,0,0,0.2)" },
-  btnResolver: { width: "100%", padding: "20px", backgroundColor: "#4caf50", color: "white", fontSize: "1.3rem", fontWeight: "bold", border: "none", borderRadius: "10px", cursor: "pointer", boxShadow: "0 4px 6px rgba(0,0,0,0.2)" },
+  btnPausar: { flex: 1, padding: "15px", backgroundColor: "#ff9800", color: "white", fontSize: "1.1rem", fontWeight: "bold", border: "none", borderRadius: "10px", cursor: "pointer", boxShadow: "0 2px 4px rgba(0,0,0,0.2)" },
+  btnResolver: { flex: 1, padding: "15px", backgroundColor: "#4caf50", color: "white", fontSize: "1.1rem", fontWeight: "bold", border: "none", borderRadius: "10px", cursor: "pointer", boxShadow: "0 2px 4px rgba(0,0,0,0.2)" },
   infoResolucion: { marginTop: "15px", paddingTop: "15px", borderTop: "1px solid #eee", fontSize: "0.95rem", color: "#555" }
 };
