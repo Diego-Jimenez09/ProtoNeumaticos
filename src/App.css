@@ -1,5 +1,5 @@
 /* =========================================================
-   General
+   GENERAL
 ========================================================= */
 
 * {
@@ -208,7 +208,7 @@ button {
   height: 42px;
   margin: 0;
 
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
 
@@ -223,7 +223,7 @@ button {
 
 .orientation-label {
   position: absolute;
-  left: 40%;
+  left: 50%;
   z-index: 5;
 
   height: 42px;
@@ -242,11 +242,11 @@ button {
 }
 
 .orientation-top {
-  top: -10px;
+  top: -22px;
 }
 
 .orientation-bottom {
-  bottom: 2px;
+  bottom: -24px;
 }
 
 
@@ -852,11 +852,11 @@ button {
   }
 
   .orientation-top {
-    top: -10px;
+    top: -22px;
   }
 
   .orientation-bottom {
-    bottom: 2px;
+    bottom: -24px;
   }
 
   .bus-diagram {

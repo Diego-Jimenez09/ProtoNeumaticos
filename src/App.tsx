@@ -19,6 +19,10 @@ export default function App() {
   // =====================================================
   // SELECCIÓN DE RUEDA
   // =====================================================
+  // Se usa un único diagrama (8 ruedas) que sirve tanto
+  // para buses de 6 como de 8 ruedas: si el bus es de 6
+  // ruedas, el chofer simplemente no selecciona las
+  // posiciones 7 y 8.
 
   const seleccionarRueda = (numero) => {
     setMensaje("");
@@ -183,6 +187,7 @@ export default function App() {
           ${className}
           ${seleccionada ? "wheel-selected" : ""}
         `}
+        aria-pressed={seleccionada}
         onClick={() => seleccionarRueda(numero)}
       >
         {numero}
@@ -328,25 +333,45 @@ export default function App() {
 
           <div className="bus-section">
 
+            <div
+              className="direction-row"
+              aria-label="Orientación longitudinal del bus"
+            >
+              <span>← DELANTERA</span>
+              <span>TRASERA →</span>
+            </div>
+
+            <div className="orientation-label orientation-top">
+              ↑ LADO COPILOTO
+            </div>
+
             <div className="bus-diagram">
 
-              <div className="bus-body bus-eight">
+              <span
+                className="layout-line"
+                aria-hidden="true"
+              />
 
-                <span className="side-label side-copiloto">
-                  LADO COPILOTO
-                </span>
+              <span
+                className="axle axle-1"
+                aria-hidden="true"
+              >
+                1
+              </span>
 
-                <span className="side-label side-chofer">
-                  LADO CHOFER
-                </span>
+              <span
+                className="axle axle-2"
+                aria-hidden="true"
+              >
+                2
+              </span>
 
-                <span className="front-label">
-                  DELANTERA
-                </span>
-
-                <span className="rear-label">
-                  TRASERA
-                </span>
+              <span
+                className="axle axle-3"
+                aria-hidden="true"
+              >
+                3
+              </span>
 
 
                 {/* =================================================
@@ -355,12 +380,12 @@ export default function App() {
 
                 <Rueda
                   numero={2}
-                  className="eight-wheel-2"
+                  className="wheel-2"
                 />
 
                 <Rueda
                   numero={1}
-                  className="eight-wheel-1"
+                  className="wheel-1"
                 />
 
 
@@ -374,22 +399,22 @@ export default function App() {
 
                 <Rueda
                   numero={6}
-                  className="eight-wheel-6"
+                  className="wheel-6"
                 />
 
                 <Rueda
                   numero={5}
-                  className="eight-wheel-5"
+                  className="wheel-5"
                 />
 
                 <Rueda
                   numero={4}
-                  className="eight-wheel-4"
+                  className="wheel-4"
                 />
 
                 <Rueda
                   numero={3}
-                  className="eight-wheel-3"
+                  className="wheel-3"
                 />
 
 
@@ -401,16 +426,18 @@ export default function App() {
 
                 <Rueda
                   numero={8}
-                  className="eight-wheel-8"
+                  className="wheel-8"
                 />
 
                 <Rueda
                   numero={7}
-                  className="eight-wheel-7"
+                  className="wheel-7"
                 />
 
-              </div>
+            </div>
 
+            <div className="orientation-label orientation-bottom">
+              ↓ LADO CHOFER
             </div>
 
           </div>
