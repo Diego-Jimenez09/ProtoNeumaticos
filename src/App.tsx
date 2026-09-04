@@ -19,10 +19,6 @@ export default function App() {
   // =====================================================
   // SELECCIÓN DE RUEDA
   // =====================================================
-  // Se usa un único diagrama (8 ruedas) que sirve tanto
-  // para buses de 6 como de 8 ruedas: si el bus es de 6
-  // ruedas, el chofer simplemente no selecciona las
-  // posiciones 7 y 8.
 
   const seleccionarRueda = (numero) => {
     setMensaje("");

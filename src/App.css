@@ -1,5 +1,5 @@
 /* =========================================================
-   GENERAL
+   General
 ========================================================= */
 
 * {
@@ -191,13 +191,62 @@ button {
 ========================================================= */
 
 .bus-section {
+  position: relative;
   width: 100%;
-
-  border: 1px solid #dfe5ed;
-  border-radius: 14px;
-
-  padding: 20px;
+  padding: 0 10px;
   margin-top: 20px;
+}
+
+.direction-row {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  z-index: 5;
+
+  width: 100%;
+  max-width: 840px;
+  height: 42px;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #526176;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.orientation-label {
+  position: absolute;
+  left: 40%;
+  z-index: 5;
+
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #536174;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.orientation-top {
+  top: -10px;
+}
+
+.orientation-bottom {
+  bottom: 2px;
 }
 
 
@@ -206,88 +255,83 @@ button {
 ========================================================= */
 
 .bus-diagram {
-  width: 100%;
-  padding: 40px 0;
-  overflow: visible;
-}
-
-.bus-body {
   position: relative;
 
   width: 100%;
-  max-width: 780px;
-
-  /*
-    La altura permite que los cuatro
-    neumáticos de tracción del bus
-    de 8 ruedas entren verticalmente.
-  */
-
-  height: clamp(190px, 27vw, 245px);
-
-  min-height: 190px;
+  max-width: 840px;
+  height: 288px;
 
   margin: 0 auto;
-
-  background: #f8fafc;
-
-  border: 4px solid #c5ced9;
-  border-radius: 32px;
+  overflow: visible;
 }
 
-
-/* =========================================================
-   LADO DEL BUS
-========================================================= */
-
-.side-label {
+.layout-line {
   position: absolute;
+  top: 50%;
+  right: 9%;
+  left: 9%;
 
+  height: 2px;
+
+  background: #d9dee6;
+  transform: translateY(-50%);
+}
+
+.axle {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #dfe3e9;
+  color: #384250;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  transform: translate(-50%, -50%);
+}
+
+.axle::before,
+.axle::after {
+  position: absolute;
   left: 50%;
 
+  width: 2px;
+  height: 31px;
+
+  background: #b9c3cf;
+  content: "";
+
   transform: translateX(-50%);
-
-  color: #667085;
-
-  font-size: 11px;
-  font-weight: bold;
-
-  letter-spacing: 0.3px;
-
-  white-space: nowrap;
 }
 
-.side-copiloto {
-  top: -25px;
+.axle::before {
+  bottom: 100%;
 }
 
-.side-chofer {
-  bottom: -25px;
+.axle::after {
+  top: 100%;
 }
 
-
-/* =========================================================
-   DELANTERA / TRASERA
-========================================================= */
-
-.front-label,
-.rear-label {
-  position: absolute;
-
-  top: -25px;
-
-  color: #667085;
-
-  font-size: 10px;
-  font-weight: bold;
+.axle-1 {
+  left: 15%;
 }
 
-.front-label {
-  left: 3%;
+.axle-2 {
+  left: 66%;
 }
 
-.rear-label {
-  right: 3%;
+.axle-3 {
+  left: 88%;
 }
 
 
@@ -297,17 +341,18 @@ button {
 
 .wheel {
   position: absolute;
+  z-index: 4;
 
-  width: clamp(42px, 6vw, 58px);
-  height: clamp(42px, 6vw, 58px);
+  width: 66px;
+  height: 42px;
 
   border: none;
-  border-radius: 9px;
+  border-radius: 13px;
 
-  background: #4d5156;
+  background: #40464d;
   color: white;
 
-  font-size: clamp(16px, 2vw, 20px);
+  font-size: 18px;
   font-weight: bold;
 
   display: flex;
@@ -315,7 +360,9 @@ button {
   justify-content: center;
 
   box-shadow:
-    0 2px 5px rgba(0, 0, 0, 0.25);
+    0 3px 7px rgba(16, 35, 63, 0.18);
+
+  transform: translateX(-50%);
 
   transition:
     transform 0.12s ease,
@@ -324,17 +371,22 @@ button {
 }
 
 .wheel:hover {
-  transform: scale(1.06);
+  transform: translateX(-50%) scale(1.05);
+}
+
+.wheel:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 3px;
 }
 
 .wheel-selected {
   background: #2367e8;
 
   box-shadow:
-    0 0 0 4px #cfe0ff,
-    0 3px 8px rgba(0, 0, 0, 0.25);
+    0 0 0 5px #dce9ff,
+    0 5px 10px rgba(35, 103, 232, 0.28);
 
-  transform: scale(1.06);
+  transform: translateX(-50%) scale(1.05);
 }
 
 .wheel-disabled {
@@ -343,90 +395,47 @@ button {
 }
 
 
-/* =========================================================
-   BUS (diagrama único de 8 ruedas)
-
-   Sirve tanto para buses de 8 ruedas como de 6 ruedas
-   (en ese caso, simplemente no se usan las posiciones 7 y 8).
-
-   Visual:
-
-        2                 6          8
-                          5
-                          4
-        1                 3          7
-
-========================================================= */
-
-
-/* =========================================================
-   PRIMER EJE
-========================================================= */
-
-.eight-wheel-2 {
-  left: 4%;
-  top: 15%;
+.wheel-2,
+.wheel-1 {
+  left: 15%;
 }
 
-.eight-wheel-1 {
-  left: 4%;
-  bottom: 15%;
+.wheel-6,
+.wheel-5,
+.wheel-4,
+.wheel-3 {
+  left: 66%;
 }
 
-
-/* =========================================================
-   EJE DE TRACCIÓN
-
-   Los cuatro neumáticos están
-   en UNA SOLA COLUMNA.
-
-        6
-        5
-        4
-        3
-========================================================= */
-
-.eight-wheel-6 {
-  right: 25%;
-  top: 5%;
+.wheel-8,
+.wheel-7 {
+  left: 88%;
 }
 
-.eight-wheel-5 {
-  right: 25%;
-  top: 30%;
+.wheel-2,
+.wheel-8 {
+  top: 55px;
 }
 
-.eight-wheel-4 {
-  right: 25%;
-  top: 55%;
+.wheel-1,
+.wheel-7 {
+  bottom: 55px;
 }
 
-.eight-wheel-3 {
-  right: 25%;
-  top: 80%;
+.wheel-6 {
+  top: 9px;
 }
 
-
-/* =========================================================
-   ÚLTIMO EJE
-
-        8
-        7
-
-   Igual que el primer eje:
-
-        2
-        1
-========================================================= */
-
-.eight-wheel-8 {
-  right: 4%;
-  top: 15%;
+.wheel-5 {
+  top: 55px;
 }
 
-.eight-wheel-7 {
-  right: 4%;
-  bottom: 15%;
+.wheel-4 {
+  bottom: 55px;
+}
+
+.wheel-3 {
+  bottom: 9px;
 }
 
 
@@ -739,17 +748,6 @@ button {
     grid-template-columns: repeat(2, 1fr);
   }
 
-
-  /* BUS */
-
-  .eight-wheel-6,
-  .eight-wheel-5,
-  .eight-wheel-4,
-  .eight-wheel-3 {
-    right: 25%;
-  }
-
-
   /* FOTO + PRECIO */
 
   .combo-fields {
@@ -838,83 +836,75 @@ button {
   /* BUS */
 
   .bus-section {
-    padding: 10px;
+    padding: 0;
     margin-top: 15px;
   }
 
-  .bus-diagram {
-    width: 100%;
-    padding: 38px 0;
+  .direction-row {
+    top: 2px;
+    height: 38px;
+    font-size: 11px;
   }
 
-  .bus-body {
-    width: 100%;
+  .orientation-label {
+    height: 38px;
+    font-size: 10px;
+  }
 
-    /*
-      Mayor altura para que 6-5-4-3
-      puedan quedar en una columna.
-    */
+  .orientation-top {
+    top: -10px;
+  }
 
-    height: 205px;
-    min-height: 205px;
+  .orientation-bottom {
+    bottom: 2px;
+  }
 
-    border-width: 3px;
-    border-radius: 25px;
+  .bus-diagram {
+    height: 276px;
+  }
+
+  .axle {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 15px;
+  }
+
+  .axle::before,
+  .axle::after {
+    height: 34px;
   }
 
 
   /* RUEDAS */
 
   .wheel {
-    width: 40px;
-    height: 40px;
+    width: 54px;
+    height: 38px;
 
-    border-radius: 8px;
+    border-radius: 11px;
 
-    font-size: 15px;
+    font-size: 16px;
   }
 
-
-  /* ETIQUETAS */
-
-  .side-label {
-    font-size: 9px;
+  .wheel-6 {
+    top: 10px;
   }
 
-  .side-copiloto {
-    top: -23px;
+  .wheel-5,
+  .wheel-2,
+  .wheel-8 {
+    top: 52px;
   }
 
-  .side-chofer {
-    bottom: -23px;
+  .wheel-4,
+  .wheel-1,
+  .wheel-7 {
+    bottom: 52px;
   }
 
-  .front-label,
-  .rear-label {
-    font-size: 8px;
-    top: -22px;
-  }
-
-
-  /* =====================================================
-     BUS EN TELÉFONO
-  ===================================================== */
-
-  .eight-wheel-2,
-  .eight-wheel-1 {
-    left: 4%;
-  }
-
-  .eight-wheel-6,
-  .eight-wheel-5,
-  .eight-wheel-4,
-  .eight-wheel-3 {
-    right: 27%;
-  }
-
-  .eight-wheel-8,
-  .eight-wheel-7 {
-    right: 4%;
+  .wheel-3 {
+    bottom: 10px;
   }
 
 
@@ -1015,33 +1005,43 @@ button {
   }
 
   .bus-section {
-    padding: 7px;
+    padding-right: 0;
+    padding-left: 0;
   }
 
-  .bus-body {
-    height: 195px;
-    min-height: 195px;
+  .direction-row {
+    font-size: 9px;
+    letter-spacing: 0.2px;
+  }
+
+  .orientation-label {
+    font-size: 9px;
+    letter-spacing: 0.3px;
   }
 
   .wheel {
-    width: 36px;
-    height: 36px;
+    width: 48px;
     font-size: 14px;
   }
 
-
-  /* BUS */
-
-  .eight-wheel-6,
-  .eight-wheel-5,
-  .eight-wheel-4,
-  .eight-wheel-3 {
-    right: 27%;
+  .axle-1,
+  .wheel-2,
+  .wheel-1 {
+    left: 14%;
   }
 
-  .eight-wheel-8,
-  .eight-wheel-7 {
-    right: 3%;
+  .axle-2,
+  .wheel-6,
+  .wheel-5,
+  .wheel-4,
+  .wheel-3 {
+    left: 65%;
+  }
+
+  .axle-3,
+  .wheel-8,
+  .wheel-7 {
+    left: 87%;
   }
 
 
