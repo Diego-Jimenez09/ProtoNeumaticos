@@ -1,0 +1,9 @@
+/* Demo shell only. Do not import this file into the existing form. */
+html { font-size: 100%; background: #f3f5f8; }
+body { margin: 0; }
+.inspection-demo { box-sizing: border-box; min-height: 100svh; padding: 3rem 1.5rem; background: #f3f5f8; }
+.inspection-demo__sheet { box-sizing: border-box; width: 100%; max-width: 1024px; margin: 0 auto; padding: 2.25rem; border: 1px solid #dbe1ea; border-radius: 1.25rem; background: #fff; box-shadow: 0 4px 24px #21304b06; }
+@media (max-width: 600px) {
+  .inspection-demo { padding: 0; background: #fff; }
+  .inspection-demo__sheet { padding: 1.5rem 1rem; border: 0; border-radius: 0; box-shadow: none; }
+}

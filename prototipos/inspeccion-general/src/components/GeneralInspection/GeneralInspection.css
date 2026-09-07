@@ -1,0 +1,66 @@
+.ig-menu {
+  --ig-ink: #202c3e;
+  --ig-blue: #254f9d;
+  --ig-border: #bdc7d4;
+  container-type: inline-size;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--ig-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  color-scheme: light;
+}
+
+.ig-menu *, .ig-menu *::before, .ig-menu *::after { box-sizing: border-box; }
+.ig-menu svg { display: block; width: 100%; height: 100%; }
+.ig-menu__legend { max-width: 100%; padding: 0; margin: 0 0 1.25rem; }
+.ig-menu__heading { display: flex; align-items: center; gap: 1rem; font-size: 2rem; font-weight: 700; line-height: 1.2; letter-spacing: -.035em; overflow-wrap: anywhere; }
+.ig-menu__heading > span:last-child { min-width: 0; }
+.ig-menu__heading-icon { display: block; flex: 0 0 3rem; width: 3rem; height: 3rem; padding: .65rem; border-radius: .75rem; background: var(--ig-blue); color: #fff; }
+.ig-menu__instruction { margin: 0 0 1.25rem; font-size: 1.125rem; font-weight: 500; line-height: 1.5; }
+.ig-menu__options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .625rem; }
+.ig-menu__option { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto 1fr; align-items: start; gap: .625rem .5rem; min-width: 0; min-height: 8rem; padding: .75rem; margin: 0; border: 2px solid var(--ig-border); border-radius: .75rem; background: #fff; color: var(--ig-ink); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.ig-menu__input { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.ig-menu__option-icon { grid-column: 1; grid-row: 1; flex: 0 0 2.75rem; width: 1.75rem; height: 1.75rem; color: #596a80; }
+.ig-menu__option-content { grid-column: 1 / -1; grid-row: 2; flex: 1; min-width: 0; }
+.ig-menu__option-label { font-size: 1.0625rem; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.ig-menu__checkbox { grid-column: 2; grid-row: 1; display: block; flex: 0 0 1.75rem; width: 1.75rem; height: 1.75rem; padding: .2rem; border: 2px solid #8998aa; border-radius: .375rem; background: #fff; color: #fff; }
+.ig-menu__checkbox svg { visibility: hidden; stroke-width: 2.8; }
+.ig-menu__option[data-selected="true"] { border-color: var(--ig-blue); background: #edf3ff; }
+.ig-menu__option[data-selected="true"] .ig-menu__option-icon { color: var(--ig-blue); }
+.ig-menu__option[data-selected="true"] .ig-menu__checkbox { border-color: var(--ig-blue); background: var(--ig-blue); }
+.ig-menu__option[data-selected="true"] .ig-menu__checkbox svg { visibility: visible; }
+.ig-menu__focus { display: none; position: absolute; inset: -5px; border: 3px solid var(--ig-blue); border-radius: .9375rem; pointer-events: none; }
+.ig-menu__input:focus-visible ~ .ig-menu__focus { display: block; }
+
+@media (hover: hover) {
+  .ig-menu__option:hover { border-color: var(--ig-blue); }
+}
+
+/* Keep two columns everywhere; use a horizontal card when the form has room. */
+@container (min-width: 46rem) {
+  .ig-menu__options { gap: .75rem; }
+  .ig-menu__option { display: flex; align-items: center; gap: 1rem; min-height: 5.5rem; padding: 1rem 1.125rem; }
+  .ig-menu__option-icon { width: 2.75rem; height: 2.75rem; padding: .5rem; border-radius: .625rem; background: #f1f4f8; }
+  .ig-menu__option-label { font-size: 1.125rem; }
+  .ig-menu__option[data-selected="true"] .ig-menu__option-icon { background: #dfe9fb; }
+}
+
+@media (max-width: 400px) {
+  .ig-menu__heading { font-size: 1.625rem; gap: .75rem; }
+  .ig-menu__heading-icon { flex-basis: 2.625rem; width: 2.625rem; height: 2.625rem; padding: .55rem; }
+}
+
+@media (forced-colors: active) {
+  .ig-menu__option { border-color: ButtonText; }
+  .ig-menu__option[data-selected="true"] { border-color: Highlight; }
+  .ig-menu__option[data-selected="true"] .ig-menu__checkbox { forced-color-adjust: none; background: Highlight; border-color: Highlight; color: HighlightText; }
+  .ig-menu__focus { border-color: Highlight; }
+}

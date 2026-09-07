@@ -1,3 +1,29 @@
+# ProtoNeumaticos
+
+## Prototipo de Inspección general
+
+El menú de inspección está disponible como aplicación independiente en [prototipos/inspeccion-general](prototipos/inspeccion-general/README.md).
+
+- [Ver la demostración publicada](https://inspeccion-general-taller.d-jimenez09.chatgpt.site/).
+- [Componente reutilizable y estilos](prototipos/inspeccion-general/src/components/GeneralInspection).
+- [Comprobaciones realizadas](prototipos/inspeccion-general/VERIFICATION.md).
+
+Para ejecutarlo desde la raíz del repositorio (Node.js 20.19+ o 22.12+):
+
+```sh
+cd prototipos/inspeccion-general
+npm ci
+npm run dev
+```
+
+Para compilarlo, ejecuta `npm run build` desde esa misma carpeta. La aplicación original de neumáticos continúa en la raíz del repositorio y conserva sus comandos habituales.
+
+El prototipo usa React, JavaScript y CSS, no tiene backend y ofrece diez opciones en dos columnas. El formulario principal recibe los IDs seleccionados mediante `onChange` y controla la selección con `value`. La guía de la carpeta incluye el ejemplo de integración.
+
+La demostración publicada es independiente de GitHub: subir cambios a esta rama no actualiza automáticamente ese enlace.
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
